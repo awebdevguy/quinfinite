@@ -1,3 +1,1 @@
-# quinfinite
-# quinfinite
-# quinfinite
+Uses Unsplash API to download images. Scrolls images infinitely. 
