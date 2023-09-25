@@ -19,10 +19,15 @@ if (Object.keys(functions.config()).length) {
 
 getPhotos();
 
+  // const result = await fetch(`/.netlify/functions/api?source=${selectedSource}&search=${search}&page=${page}&per_page=${per_page}`);
+  // const data = await result.json();
+  // console.log(data);
+
 // Get photos from Unsplash API
 async function getPhotos() {
   try {
-    const response = await fetch(getURL(config.unsplash_api.key, fetchCount));
+    // const response = await fetch(getURL(config.unsplash_api.key, fetchCount));
+    const response = await fetch(`/.netlify/functions/fetch?count=${fetchCount}`);
     photosArray = await response.json();
     console.log("data: " + JSON.stringify(photosArray));
     displayPhotos(photosArray);
@@ -32,9 +37,9 @@ async function getPhotos() {
 }
 
 // Put URL together using template literals, which only works inside functions.
-function getURL(key, count) {
-  return `https://api.unsplash.com/photos/random?client_id=${key}&count=${count}`;
-}
+// function getURL(key, count) {
+//   return `https://api.unsplash.com/photos/random?client_id=${key}&count=${count}`;
+// }
 
 // Create Elements for Links and Photos, then add to DOM
 function displayPhotos(pArray) {
